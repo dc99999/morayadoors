@@ -8,6 +8,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  document.querySelectorAll(".detail-gallery").forEach((gallery) => {
+    const images = Array.from(gallery.children);
+    const descriptions = [
+      "A refined design with a balanced, timeless finish.",
+      "A practical style created to complement modern spaces.",
+      "Carefully selected details bring this design to life.",
+      "A distinctive option for customers who value quality.",
+      "Thoughtful proportions make this piece easy to live with.",
+      "A warm, versatile design for everyday interiors.",
+      "Clean lines and a considered finish create a premium look.",
+      "A dependable choice with strong visual character.",
+      "Designed to add comfort, beauty and lasting appeal.",
+      "A beautiful example from the Morya collection.",
+    ];
+
+    images.sort(() => Math.random() - 0.5);
+    images.forEach((image, index) => {
+      const figure = document.createElement("figure");
+      const caption = document.createElement("figcaption");
+
+      caption.textContent = descriptions[index];
+      figure.append(image, caption);
+      gallery.appendChild(figure);
+    });
+  });
+
   const mapElement = document.getElementById("map");
 
   if (mapElement && typeof L !== "undefined") {
